@@ -18,7 +18,7 @@
 - Unicode support
 - Lightweight
 			
-      Smallest amount of overhead	in comparison to plain text binary
+      Smallest amount of overhead in comparison to plain text binary
 - Easy to use
 			
       Intuitive functions
