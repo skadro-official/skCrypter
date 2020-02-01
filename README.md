@@ -8,10 +8,11 @@ Whats the problem?
 - Having plain strings stored in the binary file or in memory can help reversering attempts to be much easier.
 - If the program is targeted by string detection scans you had to change the strings everytime you get detected.
 
-#2 Other crypters
-- Some crypters decrypt the string on the current stack location. Even though in some situations the stack location is overwritten on returning from a function, especially when the encryption is called from the main function the encrypted string stays on the stack for the lifetime of the stack/program.
-- Some do not work with both Usermode and Kernelmode
+#2 Some crypters
+- Decrypt the string on the current stack location. Even though in some situations the stack location is overwritten on returning from a function, especially when the encryption is called from the main function the encrypted string stays on the stack for the lifetime of the stack/program.
+- Do not work with both Usermode and Kernelmode
 - Greater overhead
+- Require compiler optimizations enabled
 
 Why this crypter?
 
