@@ -13,10 +13,11 @@ Whats the problem?
 - Do not work with both Usermode and Kernelmode
 - Greater overhead
 - Require compiler optimizations enabled
+- Vulnerable against default bruteforcing
 
 Why this crypter?
 
-skCrypter works out of the box with both Usermode + Kernelmode and compiler optimizations on/off (tested with msvsc++19). The overhead is very low and the storage of the string is at a fixed address which is controlable at every time and clearable traceless(builtin function)
+skCrypter works out of the box with both Usermode + Kernelmode and compiler optimizations on/off (tested with msvsc++19). The overhead is very low and the storage of the string is at a fixed address which is controlable at every time and clearable traceless(builtin function). The encryption is randomized at every compilation and protected against default bruteforcing.
 
 
 - Compile time string encryption
