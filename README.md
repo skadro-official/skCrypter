@@ -2,7 +2,7 @@
 
 # Compile-time, Usermode + Kernelmode, safe and lightweight string crypter library for C++11+
 
-Whats the problem?
+What is the problem?
 
 #1 Strings
 - Having plain strings stored in the binary file or in memory can help reversering attempts to be much easier.
