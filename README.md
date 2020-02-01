@@ -11,11 +11,11 @@ Whats the problem?
 #2 Other crypters
 - Some crypters decrypt the string on the current stack location. Even though in some situations the stack location is overwritten on returning from a function, especially when the encryption is called from the main function the encrypted string stays on the stack for the lifetime of the stack/program.
 - Some do not work with both Usermode and Kernelmode
+- Greater overhead
 
 Why this crypter?
 
-skCrypter works out of the box with both Usermode + Kernelmode and compiler optimizations on/off (tested with msvsc++19).
-The storage of the string is a fixed address which is controlable at every time and clearable traceless(builtin function)
+skCrypter works out of the box with both Usermode + Kernelmode and compiler optimizations on/off (tested with msvsc++19). The overhead is very low and the storage of the string is at a fixed address which is controlable at every time and clearable traceless(builtin function)
 
 - Compile time string encryption
 
