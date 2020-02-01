@@ -118,7 +118,7 @@ namespace skc
 #define skCrypt(str) skCrypt_key(str, __TIME__[4], __TIME__[7])
 #define skCrypt_key(str, key1, key2) []() { \
 			constexpr static auto crypted = skc::skCrypter \
-				<sizeof(str) / sizeof(str[0]), key, key2, clean_type<decltype(str[0])>>((clean_type<decltype(str[0])>*)str); \
+				<sizeof(str) / sizeof(str[0]), key1, key2, clean_type<decltype(str[0])>>((clean_type<decltype(str[0])>*)str); \
 					return crypted; }()
 
 /*________________________________________________________________________________
