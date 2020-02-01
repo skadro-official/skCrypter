@@ -56,6 +56,7 @@ Include skCrypter.h
 
 
     auto testString = skCrypt(L"TestString");	// encrypted at compile-time
+							// or skCrypt_key to set the keys manually
 
     wprintf(testString);                            // automatic decryption on usage (alternatevly .decrypt())
 
