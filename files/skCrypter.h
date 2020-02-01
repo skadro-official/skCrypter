@@ -9,36 +9,6 @@ License: See end of file
 skCrypter
 		Compile-time, Usermode + Kernelmode, safe and lightweight string crypter library for C++11+
 
-About:
-		- Compile time string encryption
-			The plain string is not visible in the binary
-		- Protected against bruteforcing
-			The string is randomly(key+algorithm) XOR´ed protecting against default XOR bruteforcing
-		- Usermode + Kernelmode
-			Ready to use solution for both Usermode and Kernelmode
-		- Traceless
-			The string storage can be fully cleared if necessary
-		- C++11+ support
-		- Unicode support
-		- Lightweight
-			Smallest amount of overhead	in comparison to plain text binary
-		- Easy to use
-			Intuitive functions
-		- Full control
-			You can access and manipulate the string storage at any time
-		- Global lifetime
-			The encrypted string has static lifetime until cleared
-		- Auto decrypt
-			You can pass the returned class into a function
-
-Example:
-	auto testString = skCrypt(L"TestString");	// encrypted at compile-time
-	wprintf(testString);						// automatic decryption on usage (alternatevly .decrypt())
-
-	testString.encrypt();						// encrypt after usage if needed again
-											// or
-	testString.clear();							// Set full string storage to 0
-
 							*Not removing this part is appreciated*
 ____________________________________________________________________________________________________________*/
 
@@ -73,7 +43,7 @@ using clean_type = typename std::remove_const_t<std::remove_reference_t<_Ty>>;
 
 namespace skc
 {
-	template <int _size, char _key, typename T>
+	template <int _size, char _key1, char _key2, typename T>
 	class skCrypter
 	{
 	public:
@@ -94,7 +64,7 @@ namespace skc
 
 		char key()
 		{
-			return _key;
+			return _key1;
 		}
 
 		T* encrypt()
@@ -138,17 +108,17 @@ namespace skc
 		{
 			for (int i = 0; i < _size; i++)
 			{
-				_storage[i] = data[i] ^ (_key + i % __TIME__[7]);
+				_storage[i] = data[i] ^ (_key1 + i % _key2);
 			}
 		}	
 
 		T _storage[_size]{};
 	};
 }
-
-#define skCrypt(str) []() { \
+#define skCrypt(str) skCrypt_key(str, __TIME__[4], __TIME__[7])
+#define skCrypt_key(str, key1, key2) []() { \
 			constexpr static auto crypted = skc::skCrypter \
-				<sizeof(str) / sizeof(str[0]), __TIME__[4], clean_type<decltype(str[0])>>((clean_type<decltype(str[0])>*)str); \
+				<sizeof(str) / sizeof(str[0]), key, key2, clean_type<decltype(str[0])>>((clean_type<decltype(str[0])>*)str); \
 					return crypted; }()
 
 /*________________________________________________________________________________
