@@ -17,6 +17,7 @@ Why this crypter?
 
 skCrypter works out of the box with both Usermode + Kernelmode and compiler optimizations on/off (tested with msvsc++19). The overhead is very low and the storage of the string is at a fixed address which is controlable at every time and clearable traceless(builtin function)
 
+
 - Compile time string encryption
 
       The plain string is not visible in the binary
