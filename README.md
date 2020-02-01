@@ -9,7 +9,7 @@ What is the problem?
 - If the program is targeted by string detection scans you had to change the strings everytime you get detected.
 
 #2 Some crypters
-- Decrypt the string on the current stack location. Even though in some situations the stack location is overwritten on returning from a function, especially when the encryption is called from the main function the encrypted string stays on the stack for the lifetime of the stack/program.
+- Decrypt the string on the current stack location. Even though in some situations the stack location is overwritten on returning from a function, especially when the encryption is called from the main function the decrypted string stays on the stack for the lifetime of the stack/program thus leaking it
 - Do not work with both Usermode and Kernelmode
 - Greater overhead
 - Require compiler optimizations enabled
