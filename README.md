@@ -51,6 +51,10 @@ skCrypter works out of the box with both Usermode + Kernelmode and compiler opti
       You can pass the returned class into a function
 
 # Example:
+
+Include skCrypter.h
+
+
     auto testString = skCrypt(L"TestString");	// encrypted at compile-time
 
     wprintf(testString);                            // automatic decryption on usage (alternatevly .decrypt())
