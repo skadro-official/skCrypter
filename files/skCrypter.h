@@ -136,7 +136,7 @@ namespace skc
 		{
 			for (int i = 0; i < _size; i++)
 			{
-				_storage[i] = data[i] ^ (_key + i % __TIME__[0]);
+				_storage[i] = data[i] ^ (_key + i % __TIME__[7]);
 			}
 		}	
 
@@ -146,7 +146,7 @@ namespace skc
 
 #define skCrypt(str) []() { \
 			constexpr static auto crypted = skc::skCrypter \
-				<sizeof(str) / sizeof(str[0]), __TIME__[1], clean_type<decltype(str[0])>>((clean_type<decltype(str[0])>*)str); \
+				<sizeof(str) / sizeof(str[0]), __TIME__[4], clean_type<decltype(str[0])>>((clean_type<decltype(str[0])>*)str); \
 					return crypted; }()
 
 /*________________________________________________________________________________
