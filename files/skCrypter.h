@@ -122,7 +122,7 @@ namespace skc
 		{
 			for (int i = 0; i < _size; i++)
 			{
-				_storage[i] = data[i] ^ (_key1 + i % (1 + _key2);
+				_storage[i] = data[i] ^ (_key1 + i % (1 + _key2));
 			}
 		}	
 
