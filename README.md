@@ -63,3 +63,5 @@ Include skCrypter.h
     testString.encrypt();	                        // encrypt after usage if needed again
                                                 // or                   
     testString.clear();	                        // set full string storage to 0
+    
+For Kernel mode, \__TIME__" has to be enabled by setting "Project properties" -> "Driver Setting" -> "Driver Model" -> "Allow Date, Time and TimeStamp". Alternativly replace \__TIME__ with your own keys
