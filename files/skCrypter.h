@@ -19,7 +19,16 @@ ________________________________________________________________________________
 		template <class _Ty>
 		struct remove_reference {
 			using type = _Ty;
-			using _Const_thru_ref_type = const _Ty;
+		};
+
+		template <class _Ty>
+		struct remove_reference<_Ty&> {
+			using type = _Ty;
+		};
+
+		template <class _Ty>
+		struct remove_reference<_Ty&&> {
+			using type = _Ty;
 		};
 
 		template <class _Ty>
@@ -27,7 +36,12 @@ ________________________________________________________________________________
 
 		// STRUCT TEMPLATE remove_const
 		template <class _Ty>
-		struct remove_const {
+		struct remove_const { // remove top-level const qualifier
+			using type = _Ty;
+		};
+
+		template <class _Ty>
+		struct remove_const<const _Ty> {
 			using type = _Ty;
 		};
 
