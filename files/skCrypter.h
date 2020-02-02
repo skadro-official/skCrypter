@@ -129,6 +129,7 @@ namespace skc
 		T _storage[_size]{};
 	};
 }
+
 #define skCrypt(str) skCrypt_key(str, __TIME__[4], __TIME__[7])
 #define skCrypt_key(str, key1, key2) []() { \
 			constexpr static auto crypted = skc::skCrypter \
