@@ -49,39 +49,39 @@ ________________________________________________________________________________
 		using remove_const_t = typename remove_const<_Ty>::type;
 	}
 #else
-	#include <xtr1common>
+	#include <type_traits>
 #endif
-
-template<class _Ty>
-using clean_type = typename std::remove_const_t<std::remove_reference_t<_Ty>>;
 
 namespace skc
 {
+	template<class _Ty>
+	using clean_type = typename std::remove_const_t<std::remove_reference_t<_Ty>>;
+
 	template <int _size, char _key1, char _key2, typename T>
 	class skCrypter
 	{
 	public:
-		constexpr skCrypter(T* data)
+		__forceinline constexpr skCrypter(T* data)
 		{		
 			crypt(data);
 		}
 
-		T* get()
+		__forceinline T* get()
 		{
 			return _storage;
 		}
 
-		int size() // (w)char count
+		__forceinline int size() // (w)char count
 		{
 			return _size;
 		}
 
-		char key()
+		__forceinline  char key()
 		{
 			return _key1;
 		}
 
-		T* encrypt()
+		__forceinline  T* encrypt()
 		{
 			if (!isEncrypted())
 				crypt(_storage);
@@ -89,7 +89,7 @@ namespace skc
 			return _storage;
 		}
 
-		T* decrypt()
+		__forceinline  T* decrypt()
 		{
 			if (isEncrypted())
 				crypt(_storage);
@@ -97,12 +97,12 @@ namespace skc
 			return _storage;
 		}
 
-		bool isEncrypted()
+		__forceinline bool isEncrypted()
 		{
 			return _storage[_size - 1] != 0;
 		}
 
-		void clear() // set full storage to 0
+		__forceinline void clear() // set full storage to 0
 		{
 			for (int i = 0; i < _size; i++)
 			{
@@ -118,7 +118,7 @@ namespace skc
 		}
 		
 	private:
-		constexpr void crypt(T* data)
+		__forceinline constexpr void crypt(T* data)
 		{
 			for (int i = 0; i < _size; i++)
 			{
@@ -133,7 +133,7 @@ namespace skc
 #define skCrypt(str) skCrypt_key(str, __TIME__[4], __TIME__[7])
 #define skCrypt_key(str, key1, key2) []() { \
 			constexpr static auto crypted = skc::skCrypter \
-				<sizeof(str) / sizeof(str[0]), key1, key2, clean_type<decltype(str[0])>>((clean_type<decltype(str[0])>*)str); \
+				<sizeof(str) / sizeof(str[0]), key1, key2, skc::clean_type<decltype(str[0])>>((skc::clean_type<decltype(str[0])>*)str); \
 					return crypted; }()
 
 /*________________________________________________________________________________
