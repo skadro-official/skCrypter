@@ -110,7 +110,7 @@ namespace skc
 			}
 		}
 
-		operator T* ()
+		__forceinline operator T* ()
 		{
 			decrypt();
 
