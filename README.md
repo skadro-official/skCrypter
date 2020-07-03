@@ -66,4 +66,4 @@ Include skCrypter.h
     
 Important:
 - Compiler Optimization /02 might cause wrong decryption, so use /01 or disable it
-- For Kernel mode __TIME__ has to be enabled by setting "Project properties" -> "Driver Setting" -> "Driver Model" -> "Allow Date, Time and TimeStamp". Alternatively replace __TIME__ with your own keys
+- For Kernel mode "__TIME__" has to be enabled by setting "Project properties" -> "Driver Setting" -> "Driver Model" -> "Allow Date, Time and TimeStamp". Alternatively replace "__TIME__" with your own keys
