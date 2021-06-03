@@ -4,7 +4,7 @@
 int main()
 {
 	auto testString = skCrypt("TestString");	// encrypted at compile-time
-	printf(testString);							// automatic decryption on usage (alternatevly .decrypt())
+	printf(testString);							// automatic decryption on usage (alternatively .decrypt())
 
 	testString.encrypt();						// encrypt after usage if needed again
 											// or
